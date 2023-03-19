@@ -1,0 +1,11 @@
+# IntelliJ IDEA files
+.idea/
+*.iml
+
+# Build artifacts
+target/
+build/
+
+# Logs and other temporary files
+*.log
+*.tmp
