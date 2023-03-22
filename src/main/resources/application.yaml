@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/testapp
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+    default-property-inclusion: non_null
+  rabbitmq:
+    listener:
+      concurrency: 3
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 1000
+          max-attempts: 3
+          max-interval: 10000
+          multiplier: 2.0
+          stateless: true
+    exchange:
+      name: javaguides_exchange
+    routing:
+      key: javaguides_routing_key
+    name: myqueue
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    batch:
+      size: 1000
+
+logging:
+  level:
+    org.springframework: INFO
+    com.example: DEBUG
